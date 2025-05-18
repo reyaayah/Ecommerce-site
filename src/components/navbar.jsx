@@ -5,7 +5,7 @@ export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <nav className="bg-purple-300 p-4 flex justify-between items-center relative">
+        <nav className="bg-[#9483D8] p-4 flex justify-between items-center relative">
 
             <div className="text-xl font-bold flex items-center">
                 <img src="/logo.svg" alt="Logo" className="w-8 mr-2" />

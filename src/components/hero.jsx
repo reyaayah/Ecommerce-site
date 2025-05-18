@@ -1,6 +1,6 @@
 export default function Hero() {
     return (
-        <div id="hero" className="bg-pink-200 p-10 flex justify-around items-center ">
+        <div id="hero" className="bg-[#E5D4E7] p-10 flex justify-around items-center ">
             <img
                 src="/pizzahero.svg"
                 alt="Pizza"

@@ -42,7 +42,7 @@ export default function Products() {
     };
 
     return (
-        <div className="bg-gray-400 p-16 relative">
+        <div className="bg-[#9D9292]  p-16 relative">
 
             <div className="relative">
                 <div
