@@ -17,8 +17,8 @@ export default function Navbar() {
                 <li><a href="#menu" className="hover:underline">Menu</a></li>
                 <li><a href="#about" className="hover:underline">About</a></li>
                 <li><a href="#contact" className="hover:underline">Contact</a></li>
-                <li className="flex items-center space-x-1">
-                    <span>Cart</span>
+                <li className="flex items-center space-x-1"><a href="/cart" className="hover:underline">
+                    <span>Cart</span></a>
                     <FaShoppingCart className="text-lg" />
                 </li>
             </ul>
