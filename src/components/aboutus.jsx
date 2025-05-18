@@ -5,7 +5,7 @@ export default function AboutUs({
     infoList = ["🥬 Fresh Ingredients,", "⏰ 30-Min Delivery,", "🍕 Customizable Orders"],
 }) {
     return (
-        <div className="px-20 py-40 flex items-center justify-around"
+        <div id="about" className="px-20 py-40 flex items-center justify-around"
             style={{
                 backgroundImage: "url('/bg_aboutus.svg')",
                 backgroundSize: "cover",

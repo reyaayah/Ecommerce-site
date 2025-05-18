@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 const pizzas = [
@@ -29,7 +29,7 @@ const pizzas = [
     {
         id: 5,
         name: "Greek Style Pizza",
-        price: 1550,
+        price: 2550,
         img: "/pizza2.png",
     },
 ];
@@ -37,6 +37,7 @@ const pizzas = [
 export default function Products() {
     const scrollRef = useRef(null);
     const { cartItems, addToCart } = useCart();
+    const [sortOrder, setSortOrder] = useState("none");
 
     const scroll = (direction) => {
         if (scrollRef.current) {
@@ -51,44 +52,61 @@ export default function Products() {
     };
 
     return (
-        <div className="bg-[#9D9292]  p-16 relative">
+        <div id="menu" className="bg-[#9D9292]  p-16 relative">
+            <div className="flex justify-end items-center mb-6 pr-10">
+                <label className="mr-4 text-lg font-semibold">Sort by Price:</label>
+                <select
+                    value={sortOrder}
+                    onChange={(e) => setSortOrder(e.target.value)}
+                    className="px-4 py-2 rounded-lg border "
+                >
+                    <option value="asc">Low to High</option>
+                    <option value="desc">High to Low</option>
+                </select>
+            </div>
 
             <div className="relative">
                 <div
                     ref={scrollRef}
                     className="flex space-x-10 overflow-x-auto scroll-smooth pb-4 scrollbar-hide w-[860px] mx-auto"
                 >
-                    {pizzas.map((pizza, index) => {
-                        const added = isInCart(pizza);
-                        return (
-                            <div
-                                key={index}
-                                className={`min-w-[250px] bg-gray-100 p-4 rounded shadow text-center flex-shrink-0 }`}
-                            >
-                                <img
-                                    src={pizza.img}
-                                    alt={pizza.name}
-                                    className="w-full h-48 object-cover mb-4 mx-auto"
-                                />
-                                <h2 className="font-bold text-lg mb-1">{pizza.name}</h2>
-                                <p className="mb-2">Price: Rs. {pizza.price}</p>
-                                <button
-                                    onClick={() => {
-                                        if (!added)
-                                            console.log("Clicked add for:", pizza);
-                                        addToCart(pizza);
-                                    }}
-                                    disabled={added}
-                                    className={`px-4 py-2 rounded text-white transition-colors ${added
-                                        ? "bg-green-500 cursor-not-allowed"
-                                        : "bg-purple-600 hover:bg-purple-400"
-                                        }`}
+                    {[...pizzas]
+                        .sort((a, b) => {
+                            if (sortOrder === "asc") return a.price - b.price;
+                            if (sortOrder === "desc") return b.price - a.price;
+                            return 0;
+                        })
+                        .map((pizza, index) => {
+                            const added = isInCart(pizza);
+                            return (
+                                <div
+                                    key={index}
+                                    className={`min-w-[250px] bg-gray-100 p-4 rounded shadow text-center flex-shrink-0 }`}
                                 >
-                                    {added ? "Added to Cart" : "Add to Cart"}
-                                </button>
-                            </div>
-                        );
-                    })}
+                                    <img
+                                        src={pizza.img}
+                                        alt={pizza.name}
+                                        className="w-full h-48 object-cover mb-4 mx-auto"
+                                    />
+                                    <h2 className="font-bold text-lg mb-1">{pizza.name}</h2>
+                                    <p className="mb-2">Price: Rs. {pizza.price}</p>
+                                    <button
+                                        onClick={() => {
+                                            if (!added)
+                                                console.log("Clicked add for:", pizza);
+                                            addToCart(pizza);
+                                        }}
+                                        disabled={added}
+                                        className={`px-4 py-2 rounded text-white transition-colors ${added
+                                            ? "bg-green-500 cursor-not-allowed"
+                                            : "bg-purple-600 hover:bg-purple-400"
+                                            }`}
+                                    >
+                                        {added ? "Added to Cart" : "Add to Cart"}
+                                    </button>
+                                </div>
+                            );
+                        })}
                 </div>
                 <button
                     onClick={() => scroll("left")}

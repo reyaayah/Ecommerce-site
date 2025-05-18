@@ -6,7 +6,7 @@ export default function Hero() {
                 alt="Pizza"
                 className="w-64 mb-4"
             />
-            <h1 className="text-4xl italic font-bold">
+            <h1 className="text-5xl italic font-bold">
                 "Hot, Fresh and Fast<br />-Pizza Delivered To You!"
             </h1>
         </div>

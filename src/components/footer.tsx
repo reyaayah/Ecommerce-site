@@ -3,7 +3,7 @@ import { FaTiktok } from "react-icons/fa6";
 
 export default function Footer() {
     return (
-        <footer className="text-center p-6 bg-[#E6D8E9] text-gray-700">
+        <footer id="contact" className="text-center p-6 bg-[#E6D8E9] text-gray-700">
             <nav className="mb-4 flex flex-col text-sm font-bold ">
                 <a href="#menu" className="hover:underline">
                     Menu
