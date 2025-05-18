@@ -1,10 +1,19 @@
-import Button from "../components/button";
+import AboutUs from "../components/aboutus";
+import Footer from "../components/footer";
+import Hero from "../components/hero";
+import Navbar from "../components/navbar";
+import Products from "../components/products";
+import Testimonials from "../components/testimonials";
 
 export default function Home() {
     return (
-        <div className="p-8">
-            <h1 className="text-3xl font-bold text-primary-dark mb-4">Welcome</h1>
-            <Button onClick={() => alert('Button clicked!')}>Click Me</Button>
-        </div>
+        <>
+            <Navbar />
+            <Hero />
+            <Products />
+            <AboutUs />
+            <Testimonials />
+            <Footer />
+        </>
     );
 }
